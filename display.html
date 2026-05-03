@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>바벨탑 — 송출 화면</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing:border-box; margin:0; padding:0; }
+        body { font-family:'Noto Sans KR',sans-serif; background:#0a0500; color:white;
+               overflow:hidden; width:100vw; height:100vh; }
+
+        /* ── 배경 (층수에 따라 변화) ── */
+        #bg {
+            position:fixed; inset:0; z-index:0;
+            transition:background 3s ease;
+        }
+
+        /* ── 레이아웃 ── */
+        #root {
+            position:relative; z-index:1;
+            display:grid;
+            grid-template-rows:auto 1fr auto;
+            height:100vh;
+        }
+
+        /* ── 상단 헤더 ── */
+        #header {
+            padding:0.8rem 2rem; background:rgba(0,0,0,0.6);
+            border-bottom:1px solid rgba(245,158,11,0.2);
+            display:flex; align-items:center; justify-content:space-between;
+            backdrop-filter:blur(10px);
+        }
+        .header-logo { font-size:2rem; font-weight:900; color:#f59e0b;
+            text-shadow:0 0 20px rgba(245,158,11,0.6); letter-spacing:-1px; }
+        .header-sub  { font-size:0.8rem; color:#78350f; margin-top:-2px; }
+        #confusion-indicator {
+            font-size:1.1rem; font-weight:900; padding:0.4rem 1rem;
+            border-radius:2rem; border:2px solid transparent;
+            transition:all 0.5s; color:rgba(255,255,255,0.2);
+        }
+        #confusion-indicator.level1 { color:#f9a8d4; border-color:#f9a8d4;
+            background:rgba(124,45,58,0.4); animation:indPulse 2s infinite; }
+        #confusion-indicator.level2 { color:#fef2f2; border-color:#ef4444;
+            background:rgba(153,27,27,0.6); animation:indPulse 0.8s infinite; }
+        @keyframes indPulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
+
+        /* ── 메인 게임 영역 ── */
+        #main { display:grid; grid-template-columns:1fr 80px 1fr; gap:0; overflow:hidden; }
+
+        /* ── 팀 패널 ── */
+        .team-panel { display:flex; flex-direction:column; overflow:hidden; }
+
+        .team-header {
+            padding:0.8rem 1.2rem; flex-shrink:0;
+            display:flex; align-items:center; justify-content:space-between;
+        }
+        .team-name { font-size:1.4rem; font-weight:900; }
+        .team-floor { font-size:3.5rem; font-weight:900; line-height:1; font-variant-numeric:tabular-nums; }
+        .team-timer { font-size:1rem; font-weight:700; font-variant-numeric:tabular-nums; }
+
+        /* 탑 영역 */
+        .tower-wrap { flex:1; position:relative; overflow:hidden; margin:0 0.8rem; }
+        .tower-container {
+            position:absolute; bottom:0; left:0; right:0;
+            display:flex; flex-direction:column-reverse; gap:2px;
+        }
+        .brick {
+            height:18px; border-radius:3px; flex-shrink:0;
+            animation:brickIn 0.2s ease;
+            box-shadow:0 2px 4px rgba(0,0,0,0.4);
+        }
+        @keyframes brickIn { from{opacity:0;transform:scaleY(0.3)} to{opacity:1;transform:scaleY(1)} }
+
+        /* 진행 바 */
+        .progress-bar-wrap { height:6px; background:rgba(255,255,255,0.1); border-radius:3px; margin:0.4rem 1.2rem 0; flex-shrink:0; overflow:hidden; }
+        .progress-bar { height:100%; border-radius:3px; transition:width 0.5s ease; }
+
+        /* 현재 층 색깔 표시 */
+        .current-color-strip {
+            margin:0 1.2rem 0.4rem; padding:0.5rem 1rem;
+            border-radius:0.6rem; font-size:0.9rem; font-weight:700;
+            text-align:center; flex-shrink:0; transition:background 0.3s;
+        }
+
+        /* ── 중앙 구분선 ── */
+        #center-divider {
+            display:flex; flex-direction:column; align-items:center; justify-content:center;
+            gap:0.5rem; padding:0.5rem;
+        }
+        .vs-text { font-size:1.5rem; font-weight:900; color:#44403c; }
+        .center-line { flex:1; width:1px; background:#292524; }
+
+        /* ── 채팅 영역 ── */
+        .chat-section { padding:0.4rem 1.2rem 0.6rem; flex-shrink:0; }
+        .chat-title { font-size:0.7rem; font-weight:700; color:#57534e;
+            text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.3rem; }
+        .chat-box { background:rgba(0,0,0,0.4); border-radius:0.6rem;
+            padding:0.4rem 0.6rem; height:90px; overflow-y:auto; }
+        .chat-box::-webkit-scrollbar { width:3px; }
+        .chat-box::-webkit-scrollbar-thumb { background:#44403c; border-radius:2px; }
+        .chat-line { font-size:0.82rem; padding:0.15rem 0;
+            border-bottom:1px solid rgba(255,255,255,0.05); word-break:break-all; }
+        .chat-line.leader-msg { color:#93c5fd; }
+        .chat-line .cn { font-weight:700; margin-right:4px; }
+
+        /* ── 로비 오버레이 ── */
+        #lobby-overlay {
+            position:fixed; inset:0; z-index:50;
+            background:rgba(10,5,0,0.92); backdrop-filter:blur(6px);
+            display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1rem;
+        }
+        #lobby-overlay.hidden { display:none; }
+        .lobby-logo-big { font-size:6rem; font-weight:900; color:#f59e0b;
+            text-shadow:0 0 60px rgba(245,158,11,0.5); letter-spacing:-3px; }
+        .lobby-sub { font-size:1.2rem; color:#78350f; }
+        #lobby-player-counts { font-size:1.4rem; font-weight:700; color:#44403c; margin-top:0.5rem; }
+
+        /* ── 언어 혼잡 대형 오버레이 ── */
+        #confusion-overlay {
+            position:fixed; inset:0; z-index:40;
+            pointer-events:none; display:none;
+            align-items:center; justify-content:center;
+        }
+        #confusion-overlay.active { display:flex; }
+        .confusion-text {
+            font-size:5rem; font-weight:900;
+            color:rgba(239,68,68,0.15);
+            animation:confText 3s ease-in-out infinite;
+            text-align:center; line-height:1.2;
+        }
+        @keyframes confText { 0%,100%{opacity:0.1;transform:scale(1)} 50%{opacity:0.2;transform:scale(1.02)} }
+
+        /* ── 승리 오버레이 ── */
+        #win-overlay {
+            position:fixed; inset:0; z-index:60;
+            background:rgba(0,0,0,0.85);
+            display:none; flex-direction:column;
+            align-items:center; justify-content:center; gap:1.5rem;
+        }
+        #win-overlay.show { display:flex; animation:winFadeIn 1s ease; }
+        @keyframes winFadeIn { from{opacity:0} to{opacity:1} }
+        .win-emoji { font-size:6rem; }
+        .win-title { font-size:4rem; font-weight:900; text-align:center; }
+        .win-verse { padding:1.2rem 2rem; border:1px solid rgba(245,158,11,0.3);
+            border-radius:1rem; background:rgba(245,158,11,0.08);
+            font-size:1.1rem; color:#fde68a; text-align:center; line-height:1.7; max-width:600px; }
+    </style>
+</head>
+<body>
+
+<div id="bg"></div>
+
+<div id="root">
+    <!-- 헤더 -->
+    <header id="header">
+        <div>
+            <div class="header-logo">🏗️ 바벨탑</div>
+            <div class="header-sub">언어의 혼잡</div>
+        </div>
+        <div id="confusion-indicator">언어 정상</div>
+    </header>
+
+    <!-- 메인 -->
+    <div id="main">
+        <!-- 팀 A -->
+        <div class="team-panel" id="panel-a">
+            <div class="team-header" style="background:rgba(59,130,246,0.1);">
+                <div>
+                    <div class="team-name" style="color:#93c5fd;">🔵 팀 A</div>
+                    <div class="team-timer" id="timer-a" style="color:#60a5fa;">⏱ 15초</div>
+                </div>
+                <div class="team-floor" id="floor-a" style="color:#93c5fd;">1</div>
+            </div>
+            <div class="progress-bar-wrap">
+                <div class="progress-bar" id="progress-a" style="background:#3b82f6;width:1%;"></div>
+            </div>
+            <div class="current-color-strip" id="color-strip-a">대기 중</div>
+            <div class="tower-wrap">
+                <div class="tower-container" id="tower-a"></div>
+            </div>
+            <div class="chat-section">
+                <div class="chat-title">💬 팀 A 채팅</div>
+                <div class="chat-box" id="chat-a"></div>
+            </div>
+        </div>
+
+        <!-- 중앙 -->
+        <div id="center-divider">
+            <div class="center-line"></div>
+            <div class="vs-text">VS</div>
+            <div class="center-line"></div>
+        </div>
+
+        <!-- 팀 B -->
+        <div class="team-panel" id="panel-b">
+            <div class="team-header" style="background:rgba(239,68,68,0.1);">
+                <div>
+                    <div class="team-name" style="color:#fca5a5;">🔴 팀 B</div>
+                    <div class="team-timer" id="timer-b" style="color:#f87171;">⏱ 15초</div>
+                </div>
+                <div class="team-floor" id="floor-b" style="color:#fca5a5;">1</div>
+            </div>
+            <div class="progress-bar-wrap">
+                <div class="progress-bar" id="progress-b" style="background:#ef4444;width:1%;"></div>
+            </div>
+            <div class="current-color-strip" id="color-strip-b">대기 중</div>
+            <div class="tower-wrap">
+                <div class="tower-container" id="tower-b"></div>
+            </div>
+            <div class="chat-section">
+                <div class="chat-title">💬 팀 B 채팅</div>
+                <div class="chat-box" id="chat-b"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 하단 상태 -->
+    <div style="text-align:center;padding:0.4rem;background:rgba(0,0,0,0.5);font-size:0.8rem;color:#44403c;" id="status-bar">
+        대기 중 — 선생님이 시작하면 게임이 시작됩니다
+    </div>
+</div>
+
+<!-- 로비 오버레이 -->
+<div id="lobby-overlay">
+    <div class="lobby-logo-big">🏗️</div>
+    <div style="font-size:2.5rem;font-weight:900;color:#f59e0b;">바벨탑: 언어의 혼잡</div>
+    <div class="lobby-sub">선생님이 시작 버튼을 누르면 게임이 시작됩니다</div>
+    <div id="lobby-player-counts">A: 0명 / B: 0명</div>
+</div>
+
+<!-- 언어 혼잡 백그라운드 효과 -->
+<div id="confusion-overlay">
+    <div class="confusion-text">אבגדהוז<br>ᚠᚡᚢᚣᚤᚥᚦ<br>𒀭𒀮𒈙𒈚</div>
+</div>
+
+<!-- 승리 오버레이 -->
+<div id="win-overlay">
+    <div class="win-emoji">🏗️</div>
+    <div class="win-title" id="win-title"></div>
+    <div class="win-verse">
+        "여호와께서 거기서 그들의 언어를 혼잡하게 하셨으므로<br>
+        그들이 온 지면에 흩어졌더라"<br>
+        <span style="font-size:0.9rem;color:#a78bfa;">— 창세기 11:8~9</span>
+    </div>
+</div>
+
+<script type="module">
+import { initializeApp }  from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+import {
+    getFirestore, doc, onSnapshot, collection, query, orderBy, limit
+} from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+const FB = initializeApp({
+    apiKey:"AIzaSyCfyjgtiDVD4Wsd9iGb9tEdrOGFYxxN2Tw",
+    authDomain:"kingdomgenius.firebaseapp.com",
+    projectId:"kingdomgenius",
+    storageBucket:"kingdomgenius.firebasestorage.app",
+    messagingSenderId:"385557748196",
+    appId:"1:385557748196:web:457b999a38e4982f188ff1"
+});
+const auth = getAuth(FB);
+const db   = getFirestore(FB);
+
+const STATE_REF  = doc(db,'kingdom_genius_games','babel_room','data','state');
+const TEAM_REF   = t => doc(db,'kingdom_genius_games','babel_room','teams',t);
+const PLAYERS    = collection(db,'kingdom_genius_games','babel_room','players');
+const CHAT_COL   = t => collection(db,'kingdom_genius_games','babel_room','chat'+t);
+
+const COLORS = {
+    red:    { label:'빨간색', hex:'#ef4444' },
+    orange: { label:'주황색', hex:'#f97316' },
+    yellow: { label:'노란색', hex:'#eab308' },
+    green:  { label:'초록색', hex:'#22c55e' },
+    blue:   { label:'파란색', hex:'#3b82f6' },
+    indigo: { label:'남색',   hex:'#6366f1' },
+    violet: { label:'보라색', hex:'#a855f7' },
+};
+const MAX_FLOOR = 100;
+const FLOOR_TIME = 15000;
+
+// ── 배경 업데이트 ─────────────────────────────────────
+function updateBackground(maxFloor) {
+    const bg = document.getElementById('bg');
+    let gradient;
+    if (maxFloor <= 10) {
+        gradient = 'linear-gradient(to top, #1a0a00, #0a0500)';
+    } else if (maxFloor <= 30) {
+        gradient = 'linear-gradient(to top, #0c1a2e, #1a0a00)';
+    } else if (maxFloor <= 55) {
+        gradient = 'linear-gradient(to top, #0c1a3e, #0c1a2e)';
+    } else if (maxFloor <= 75) {
+        gradient = 'linear-gradient(to top, #050520, #0c1a3e)';
+    } else if (maxFloor <= 90) {
+        gradient = 'linear-gradient(to top, #000000, #050520)';
+    } else {
+        gradient = 'linear-gradient(to top, #1a0000, #000000)'; // 번개 분위기
+    }
+    bg.style.background = gradient;
+}
+
+// ── 타이머 업데이트 ───────────────────────────────────
+let timerIntervals = {A:null, B:null};
+function startDisplayTimer(team, timerEnd) {
+    if (timerIntervals[team]) clearInterval(timerIntervals[team]);
+    timerIntervals[team] = setInterval(()=>{
+        const rem = Math.max(0, timerEnd - Date.now());
+        const sec = Math.ceil(rem/1000);
+        const el = document.getElementById(`timer-${team.toLowerCase()}`);
+        if (el) {
+            el.textContent = `⏱ ${sec}초`;
+            el.style.color = sec > 8 ? '#4ade80' : sec > 4 ? '#fbbf24' : '#ef4444';
+        }
+        if (rem <= 0) clearInterval(timerIntervals[team]);
+    }, 100);
+}
+
+// ── 탑 렌더링 ─────────────────────────────────────────
+function renderTower(team, completedColors) {
+    const container = document.getElementById(`tower-${team.toLowerCase()}`);
+    container.innerHTML = '';
+    // completedColors = 최근 N개 (최신이 앞에)
+    const bricks = completedColors || [];
+    bricks.forEach(colorId => {
+        const c = COLORS[colorId];
+        if (!c) return;
+        const brick = document.createElement('div');
+        brick.className = 'brick';
+        brick.style.background = c.hex;
+        container.appendChild(brick);
+    });
+}
+
+// ── 팀 패널 업데이트 ─────────────────────────────────
+function updateTeamPanel(team, data) {
+    const t = team.toLowerCase();
+    const floor = data.floor || 0;
+
+    // 층수
+    document.getElementById(`floor-${t}`).textContent = floor + '층';
+
+    // 진행 바
+    const pct = Math.max(1, (floor / MAX_FLOOR) * 100);
+    document.getElementById(`progress-${t}`).style.width = pct + '%';
+
+    // 현재 층 색깔
+    const colorId = data.blueprint && floor >= 1 ? data.blueprint[floor-1] : null;
+    const c = colorId ? COLORS[colorId] : null;
+    const strip = document.getElementById(`color-strip-${t}`);
+    if (c && data.floorStatus === 'active') {
+        strip.style.background = c.hex + '33';
+        strip.style.border = `1px solid ${c.hex}66`;
+        strip.style.color = c.hex;
+        strip.textContent = `지금: ${c.label}`;
+    } else {
+        strip.style.background = 'rgba(0,0,0,0.3)';
+        strip.style.border = '1px solid #292524';
+        strip.style.color = '#57534e';
+        strip.textContent = data.floorStatus === 'won' ? '🏆 완성!' : '대기 중';
+    }
+
+    // 탑 렌더링
+    renderTower(team, data.completedColors || []);
+
+    // 타이머
+    if (data.timerEnd && data.floorStatus === 'active') {
+        startDisplayTimer(team, data.timerEnd);
+    }
+
+    // 배경 업데이트 (양 팀 중 높은 쪽)
+    const otherFloorEl = document.getElementById(`floor-${team==='A'?'b':'a'}`);
+    const otherFloor = parseInt(otherFloorEl?.textContent)||0;
+    updateBackground(Math.max(floor, otherFloor));
+
+    // 상태 바
+    const statusBar = document.getElementById('status-bar');
+    statusBar.textContent = `팀A: ${document.getElementById('floor-a').textContent} | 팀B: ${document.getElementById('floor-b').textContent} | 목표: ${MAX_FLOOR}층`;
+}
+
+// ── 채팅 렌더링 ───────────────────────────────────────
+function renderChat(team, msgs) {
+    const box = document.getElementById(`chat-${team.toLowerCase()}`);
+    box.innerHTML = '';
+    msgs.forEach(m => {
+        const div = document.createElement('div');
+        div.className = 'chat-line' + (m.isLeader?' leader-msg':'');
+        div.innerHTML = `<span class="cn">${m.isLeader?'👑':''}${m.sender}:</span>${m.text}`;
+        box.appendChild(div);
+    });
+    box.scrollTop = box.scrollHeight;
+}
+
+// ── 승리 화면 ─────────────────────────────────────────
+function showWin(winner) {
+    const teamName = winner === 'A' ? '🔵 팀 A' : '🔴 팀 B';
+    document.getElementById('win-title').textContent = `${teamName} 완성! 🏆`;
+    document.getElementById('win-title').style.color = winner === 'A' ? '#93c5fd' : '#fca5a5';
+    document.getElementById('win-overlay').classList.add('show');
+}
+
+// ── 혼잡 UI 업데이트 ─────────────────────────────────
+let confusionLevel = 0;
+function updateConfusionUI(level) {
+    confusionLevel = level;
+    const ind = document.getElementById('confusion-indicator');
+    const overlay = document.getElementById('confusion-overlay');
+    ind.className = '';
+    if (level === 0) {
+        ind.textContent = '언어 정상';
+        ind.style.color = 'rgba(255,255,255,0.2)';
+        ind.style.border = '2px solid transparent';
+        overlay.classList.remove('active');
+    } else if (level === 1) {
+        ind.className = 'level1';
+        ind.textContent = '⚠ 언어 혼잡 1단계';
+        overlay.classList.remove('active');
+    } else {
+        ind.className = 'level2';
+        ind.textContent = '🔥 완전한 언어 혼잡!';
+        overlay.classList.add('active');
+    }
+}
+
+// ── Firebase 리스너 ───────────────────────────────────
+function setupListeners() {
+    // 상태
+    onSnapshot(STATE_REF, snap => {
+        if (!snap.exists()) return;
+        const d = snap.data();
+        const ns = d.gameStatus || 'lobby';
+
+        updateConfusionUI(d.confusionLevel || 0);
+
+        const lobby = document.getElementById('lobby-overlay');
+        if (ns === 'playing') {
+            lobby.classList.add('hidden');
+        } else {
+            lobby.classList.remove('hidden');
+        }
+
+        if (d.winner) showWin(d.winner);
+    });
+
+    // 팀 A
+    onSnapshot(TEAM_REF('A'), snap => {
+        if (snap.exists()) updateTeamPanel('A', snap.data());
+    });
+
+    // 팀 B
+    onSnapshot(TEAM_REF('B'), snap => {
+        if (snap.exists()) updateTeamPanel('B', snap.data());
+    });
+
+    // 채팅 A
+    const chatAQ = query(CHAT_COL('A'), orderBy('ts','asc'), limit(10));
+    onSnapshot(chatAQ, snap => {
+        renderChat('A', snap.docs.map(d=>d.data()));
+    });
+
+    // 채팅 B
+    const chatBQ = query(CHAT_COL('B'), orderBy('ts','asc'), limit(10));
+    onSnapshot(chatBQ, snap => {
+        renderChat('B', snap.docs.map(d=>d.data()));
+    });
+
+    // 플레이어 수
+    onSnapshot(PLAYERS, snap => {
+        const count = {A:0, B:0};
+        snap.forEach(d => { const t=d.data().team; if(t) count[t]++; });
+        document.getElementById('lobby-player-counts').textContent =
+            `🔵 팀A: ${count.A}명 | 🔴 팀B: ${count.B}명`;
+    });
+}
+
+try { await signInAnonymously(auth); setupListeners(); } catch(e) { console.error(e); }
+</script>
+</body>
+</html>
