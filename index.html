@@ -471,8 +471,20 @@ async function pressColor(cid){
     }
 
     if(cid!==req){
-        // 오답 — 흔들림
+        // 오답 — 흔들림 + 한 층 패널티
         flashButton(cid,'wrong');
+        if(advancing) return;
+        advancing=true;
+        const penaltyFloor=Math.max(1, myTeamData.floor-1);
+        try{
+            await updateDoc(TEAMDOC(myTeam),{
+                floor:penaltyFloor,
+                floorStatus:'active',
+                timerEnd:Date.now()+FLOOR_MS,
+            });
+        }catch(e){ console.error(e); }
+        finally{ setTimeout(()=>{ advancing=false; },700); }
+        showResult(false);
         return;
     }
 
