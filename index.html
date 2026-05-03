@@ -18,28 +18,20 @@
         .logo { font-size:4.5rem; font-weight:900; color:#f59e0b;
             text-shadow:0 0 40px rgba(245,158,11,0.7); letter-spacing:-2px; line-height:1; }
         .logo-sub { font-size:1.1rem; color:#78350f; font-weight:700; margin-top:-0.3rem; }
-        #name-input {
-            width:100%; max-width:300px; padding:0.9rem 1.2rem; font-size:1.3rem;
+        #name-input { width:100%; max-width:300px; padding:0.9rem 1.2rem; font-size:1.3rem;
             font-family:'Noto Sans KR',sans-serif; background:#292524;
-            border:2px solid #44403c; border-radius:0.9rem; color:white; text-align:center; outline:none;
-        }
+            border:2px solid #44403c; border-radius:0.9rem; color:white; text-align:center; outline:none; }
         #name-input:focus { border-color:#f59e0b; }
         .team-row { display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; width:100%; max-width:300px; }
-        .team-btn {
-            padding:0.8rem; font-size:1rem; font-weight:900;
+        .team-btn { padding:0.8rem; font-size:1rem; font-weight:900;
             font-family:'Noto Sans KR',sans-serif;
             border:2px solid #44403c; border-radius:0.9rem; cursor:pointer;
-            background:#292524; color:#a8a29e; transition:all 0.15s;
-        }
-        .team-btn.selected-A { background:#1e3a5f; color:#93c5fd; border-color:#3b82f6; }
-        .team-btn.selected-B { background:#3b1515; color:#fca5a5; border-color:#ef4444; }
-        .team-btn:active { transform:scale(0.97); }
-        #join-btn {
-            width:100%; max-width:300px; padding:1rem; font-size:1.1rem; font-weight:900;
-            font-family:'Noto Sans KR',sans-serif;
-            background:linear-gradient(135deg,#d97706,#b45309);
-            color:white; border:none; border-radius:0.9rem; cursor:pointer;
-        }
+            background:#292524; color:#a8a29e; transition:all 0.15s; }
+        .team-btn.selA { background:#1e3a5f; color:#93c5fd; border-color:#3b82f6; }
+        .team-btn.selB { background:#3b1515; color:#fca5a5; border-color:#ef4444; }
+        #join-btn { width:100%; max-width:300px; padding:1rem; font-size:1.1rem; font-weight:900;
+            font-family:'Noto Sans KR',sans-serif; background:linear-gradient(135deg,#d97706,#b45309);
+            color:white; border:none; border-radius:0.9rem; cursor:pointer; }
         #join-btn:active { transform:scale(0.97); }
         #gm-gear-btn { background:none; border:none; cursor:pointer; color:#292524;
             font-size:1.4rem; transition:color 0.2s,transform 0.3s; padding:0.3rem; }
@@ -66,37 +58,31 @@
         #pw-error { font-size:0.8rem; color:#ef4444; min-height:0.9rem; }
 
         /* ── GM 화면 ── */
-        #gm-screen { background:#0c0a09; z-index:200; justify-content:flex-start; padding:0; overflow-y:auto; align-items:stretch; }
+        #gm-screen { background:#0c0a09; z-index:200; justify-content:flex-start;
+            padding:0; overflow-y:auto; align-items:stretch; }
         .gm-header { padding:1rem 1.5rem; background:#1c1917; border-bottom:1px solid #292524;
             display:flex; align-items:center; justify-content:space-between; flex-shrink:0; }
         .gm-header-title { font-size:1.3rem; font-weight:900; color:#f59e0b; }
         .gm-body { padding:1.2rem; display:flex; flex-direction:column; gap:1.2rem; }
         .section-label { font-size:0.7rem; font-weight:700; color:#57534e;
-            letter-spacing:0.1em; text-transform:uppercase; border-bottom:1px solid #292524; padding-bottom:0.4rem; }
+            letter-spacing:0.1em; text-transform:uppercase;
+            border-bottom:1px solid #292524; padding-bottom:0.4rem; }
         .team-stat-row { display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; }
         .team-stat-card { background:#292524; border-radius:0.8rem; padding:0.8rem; }
         .team-stat-title { font-size:0.75rem; font-weight:700; margin-bottom:0.4rem; }
         .team-stat-floor { font-size:2.5rem; font-weight:900; line-height:1; }
-        .team-stat-info { font-size:0.75rem; color:#78716c; margin-top:0.2rem; }
-        .team-stat-color { display:inline-block; width:12px; height:12px; border-radius:50%; margin-right:4px; }
-
-        /* 혼잡 버튼 */
+        .team-stat-info  { font-size:0.75rem; color:#78716c; margin-top:0.2rem; word-break:break-all; }
         .confusion-row { display:grid; grid-template-columns:repeat(3,1fr); gap:0.5rem; }
         .conf-btn { padding:0.65rem 0; font-size:0.85rem; font-weight:900;
-            font-family:'Noto Sans KR',sans-serif; border-radius:0.7rem; cursor:pointer; border:2px solid transparent; transition:all 0.15s; }
-        .conf-btn:active { transform:scale(0.95); }
+            font-family:'Noto Sans KR',sans-serif; border-radius:0.7rem; cursor:pointer;
+            border:2px solid transparent; transition:all 0.15s; }
         #cb0 { background:#292524; color:#78716c; }
         #cb1 { background:#44263a; color:#f9a8d4; }
         #cb2 { background:#3b0f0f; color:#fca5a5; }
-        .conf-btn.active { border-color:white; box-shadow:0 0 10px currentColor; }
-        #big-confusion-btn {
-            padding:1rem; font-size:1.1rem; font-weight:900;
-            font-family:'Noto Sans KR',sans-serif;
-            background:linear-gradient(135deg,#7c2d12,#991b1b);
-            color:white; border:none; border-radius:0.8rem; cursor:pointer;
-            box-shadow:0 0 20px rgba(239,68,68,0.4);
-        }
-
+        .conf-btn.active { border-color:white; }
+        #big-confusion-btn { padding:1rem; font-size:1.1rem; font-weight:900;
+            font-family:'Noto Sans KR',sans-serif; background:linear-gradient(135deg,#7c2d12,#991b1b);
+            color:white; border:none; border-radius:0.8rem; cursor:pointer; }
         .action-row { display:grid; grid-template-columns:1fr 1fr; gap:0.7rem; }
         .btn-green { padding:0.9rem; font-size:1rem; font-weight:900; font-family:'Noto Sans KR',sans-serif;
             background:linear-gradient(135deg,#16a34a,#15803d); color:white; border:none; border-radius:0.8rem; cursor:pointer; }
@@ -105,125 +91,99 @@
         .btn-blue  { padding:0.9rem; font-size:1rem; font-weight:900; font-family:'Noto Sans KR',sans-serif;
             background:linear-gradient(135deg,#0ea5e9,#0284c7); color:white; border:none; border-radius:0.8rem; cursor:pointer; }
         .btn-green:active,.btn-gray:active,.btn-blue:active { transform:scale(0.97); }
-
-        /* GM 채팅 모니터 */
         .gm-chats { display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; }
         .gm-chat-box { background:#1c1917; border-radius:0.7rem; padding:0.6rem; max-height:120px; overflow-y:auto; }
         .gm-chat-title { font-size:0.7rem; font-weight:700; margin-bottom:0.3rem; }
-        .gm-chat-msg { font-size:0.75rem; color:#a8a29e; padding:0.15rem 0; border-bottom:1px solid #292524; word-break:break-all; }
-        .gm-chat-msg:last-child { border:none; }
+        .gm-chat-msg { font-size:0.75rem; color:#a8a29e; padding:0.15rem 0;
+            border-bottom:1px solid #292524; word-break:break-all; }
 
         /* ── 대기실 ── */
         #lobby-screen { background:linear-gradient(160deg,#1a0a00 0%,#2d1a00 100%); z-index:90; }
-        .lobby-logo { font-size:4rem; font-weight:900; color:#f59e0b; text-shadow:0 0 30px rgba(245,158,11,0.5); }
-        .lobby-team-badge { padding:0.5rem 1.5rem; border-radius:2rem; font-size:1rem; font-weight:900; margin-top:0.3rem; }
 
         /* ── 게임 화면 공통 ── */
-        #leader-screen, #member-screen {
-            justify-content:flex-start; padding:0;
-            overflow:hidden;
-        }
+        #leader-screen, #member-screen { justify-content:flex-start; padding:0; overflow:hidden; }
+        .game-header { width:100%; padding:0.8rem 1rem; flex-shrink:0;
+            display:flex; align-items:center; justify-content:space-between; }
+        .floor-info { font-size:1rem; font-weight:900; }
+        .role-tag { font-size:0.75rem; font-weight:700; padding:0.2rem 0.7rem;
+            border-radius:1rem; margin-left:0.5rem; }
+        .timer-el { font-size:2.2rem; font-weight:900; font-variant-numeric:tabular-nums; }
+        .t-ok   { color:#4ade80; }
+        .t-warn { color:#fbbf24; }
+        .t-crit { color:#ef4444; animation:tPulse 0.5s infinite; }
+        @keyframes tPulse { 0%,100%{opacity:1}50%{opacity:0.5} }
 
-        .game-header {
-            width:100%; padding:0.8rem 1rem; flex-shrink:0;
-            display:flex; align-items:center; justify-content:space-between;
-        }
-        .floor-badge { font-size:1.1rem; font-weight:900; }
-        .timer-badge { font-size:2rem; font-weight:900; font-variant-numeric:tabular-nums; }
-        .role-badge { font-size:0.75rem; font-weight:700; padding:0.2rem 0.7rem;
-            border-radius:1rem; }
-
-        /* 타이머 색상 */
-        .timer-ok   { color:#4ade80; }
-        .timer-warn { color:#fbbf24; }
-        .timer-crit { color:#ef4444; animation:timerPulse 0.5s ease-in-out infinite; }
-        @keyframes timerPulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
-
-        /* ── 팀장 화면 ── */
-        #leader-color-display {
-            flex-shrink:0; width:100%; padding:1.2rem 1rem;
-            display:flex; flex-direction:column; align-items:center; gap:0.4rem;
-        }
-        .current-color-box {
-            width:100%; max-width:280px; height:90px;
-            border-radius:1rem; display:flex; align-items:center; justify-content:center;
+        /* 팀장 화면 */
+        #leader-color-box { width:100%; padding:1.2rem 1rem; flex-shrink:0;
+            display:flex; flex-direction:column; align-items:center; gap:0.5rem; }
+        .cur-color { width:100%; max-width:280px; height:95px; border-radius:1rem;
+            display:flex; align-items:center; justify-content:center;
             font-size:2rem; font-weight:900; color:white;
-            text-shadow:0 2px 8px rgba(0,0,0,0.5);
-            box-shadow:0 0 30px currentColor; transition:background 0.3s;
-        }
-        .color-label-small { font-size:0.85rem; color:#78716c; }
+            text-shadow:0 2px 8px rgba(0,0,0,0.5); transition:background 0.3s, box-shadow 0.3s; }
+        .color-hint { font-size:0.8rem; color:#78716c; }
 
-        /* ── 멤버 화면 ── */
-        #color-buttons {
-            width:100%; padding:0.8rem 1rem; flex-shrink:0;
-        }
+        /* 색깔 버튼 */
+        #color-btns-area { width:100%; padding:0.8rem 1rem; flex-shrink:0; }
         .color-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0.5rem; }
-        .color-btn {
-            padding:0.7rem 0.3rem; border-radius:0.7rem; border:none; cursor:pointer;
-            font-size:0.85rem; font-weight:900; font-family:'Noto Sans KR',sans-serif;
-            color:white; text-shadow:0 1px 3px rgba(0,0,0,0.5);
-            transition:transform 0.1s, opacity 0.2s;
+        .cbtn {
+            padding:0.75rem 0.2rem; border-radius:0.8rem; border:3px solid transparent;
+            cursor:pointer; font-size:0.88rem; font-weight:900;
+            font-family:'Noto Sans KR',sans-serif; color:white;
+            text-shadow:0 1px 3px rgba(0,0,0,0.5);
             box-shadow:0 3px 8px rgba(0,0,0,0.4);
+            transition:transform 0.08s, border-color 0.15s;
+            -webkit-tap-highlight-color: transparent;
         }
-        .color-btn:active { transform:scale(0.92); }
-        .color-btn.disabled { opacity:0.3; pointer-events:none; }
-        .color-btn.correct { animation:correctFlash 0.5s ease; }
-        .color-btn.wrong   { animation:wrongShake 0.4s ease; }
-        @keyframes correctFlash { 0%,100%{transform:scale(1)} 50%{transform:scale(1.15)} }
-        @keyframes wrongShake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+        .cbtn:active { transform:scale(0.91); }
+        /* 정답 강조 테두리 */
+        .cbtn.hint { border-color:white; box-shadow:0 0 0 3px rgba(255,255,255,0.4); }
+        /* 오답 흔들림 */
+        .cbtn.wrong { animation:cWrong 0.35s ease; }
+        @keyframes cWrong { 0%,100%{transform:translateX(0)}25%{transform:translateX(-7px)}75%{transform:translateX(7px)} }
+        /* 정답 확인 */
+        .cbtn.correct { animation:cCorrect 0.4s ease; }
+        @keyframes cCorrect { 0%,100%{transform:scale(1)}50%{transform:scale(1.18)} }
 
-        /* ── 채팅 공통 ── */
-        .chat-area {
-            flex:1; width:100%; display:flex; flex-direction:column;
-            overflow:hidden; border-top:1px solid #292524;
-        }
-        .chat-title { padding:0.5rem 1rem; font-size:0.75rem; font-weight:700; color:#57534e;
+        /* 채팅 */
+        .chat-area { flex:1; width:100%; display:flex; flex-direction:column;
+            overflow:hidden; border-top:1px solid #292524; }
+        .chat-label { padding:0.45rem 1rem; font-size:0.72rem; font-weight:700; color:#57534e;
             flex-shrink:0; background:#1c1917; }
-        .chat-messages { flex:1; overflow-y:auto; padding:0.5rem 1rem; display:flex; flex-direction:column; gap:0.3rem; }
-        .chat-messages::-webkit-scrollbar { width:3px; }
-        .chat-messages::-webkit-scrollbar-thumb { background:#44403c; border-radius:2px; }
-        .chat-msg { padding:0.3rem 0.5rem; border-radius:0.5rem; font-size:0.9rem; word-break:break-all; }
-        .chat-msg.from-leader { background:#1e3058; border-left:3px solid #3b82f6; }
-        .chat-msg.from-me     { background:#1a2e1a; border-left:3px solid #22c55e; }
-        .chat-msg.from-other  { background:#292524; }
-        .chat-msg .sender-name { font-size:0.7rem; font-weight:700; color:#78716c; margin-bottom:0.1rem; }
-
-        .chat-input-row { display:flex; gap:0.5rem; padding:0.5rem 1rem;
+        .chat-msgs { flex:1; overflow-y:auto; padding:0.5rem 1rem;
+            display:flex; flex-direction:column; gap:0.3rem; }
+        .chat-msgs::-webkit-scrollbar { width:3px; }
+        .chat-msgs::-webkit-scrollbar-thumb { background:#44403c; border-radius:2px; }
+        .cmsg { padding:0.3rem 0.6rem; border-radius:0.5rem; font-size:0.88rem; word-break:break-all; }
+        .cmsg.leader { background:#1e3058; border-left:3px solid #3b82f6; }
+        .cmsg.me     { background:#1a2e1a; border-left:3px solid #22c55e; }
+        .cmsg.other  { background:#292524; }
+        .cmsg .who   { font-size:0.68rem; font-weight:700; color:#78716c; margin-bottom:1px; }
+        .chat-row { display:flex; gap:0.5rem; padding:0.5rem 1rem;
             background:#1c1917; border-top:1px solid #292524; flex-shrink:0; }
-        #leader-chat-input, #member-chat-input {
-            flex:1; padding:0.6rem 0.8rem; font-size:0.95rem;
+        .chat-inp { flex:1; padding:0.6rem 0.8rem; font-size:0.95rem;
             font-family:'Noto Sans KR',sans-serif; background:#292524;
-            border:1px solid #44403c; border-radius:0.6rem; color:white; outline:none;
-        }
-        #leader-chat-input:focus, #member-chat-input:focus { border-color:#f59e0b; }
-        .chat-send-btn { padding:0.6rem 1rem; font-size:0.9rem; font-weight:900;
+            border:1px solid #44403c; border-radius:0.6rem; color:white; outline:none; }
+        .chat-inp:focus { border-color:#f59e0b; }
+        .chat-send { padding:0.6rem 1rem; font-size:0.9rem; font-weight:900;
             font-family:'Noto Sans KR',sans-serif; background:#d97706;
             color:white; border:none; border-radius:0.6rem; cursor:pointer; }
 
-        /* 혼잡 경고 배너 */
-        #confusion-banner {
-            position:fixed; top:0; left:0; right:0; z-index:90;
-            padding:0.4rem; text-align:center; font-size:0.85rem; font-weight:900;
-            display:none;
-        }
-        #confusion-banner.level1 { background:#7c2d12; color:#fca5a5; display:block; }
-        #confusion-banner.level2 { background:#991b1b; color:#fef2f2; display:block;
-            animation:bannerPulse 1s ease-in-out infinite; }
-        @keyframes bannerPulse { 0%,100%{opacity:1} 50%{opacity:0.7} }
+        /* 혼잡 배너 */
+        #conf-banner { position:fixed; top:0; left:0; right:0; z-index:90;
+            padding:0.4rem; text-align:center; font-size:0.85rem; font-weight:900; display:none; }
+        #conf-banner.l1 { background:#7c2d12; color:#fcd34d; display:block; }
+        #conf-banner.l2 { background:#991b1b; color:#fef2f2; display:block;
+            animation:bBlink 0.9s infinite; }
+        @keyframes bBlink { 0%,100%{opacity:1}50%{opacity:0.7} }
 
-        /* 층 결과 오버레이 */
-        #floor-result {
-            position:fixed; inset:0; z-index:150; display:none;
-            align-items:center; justify-content:center;
-            pointer-events:none;
-        }
-        #floor-result.show { display:flex; animation:resultFade 0.8s ease forwards; }
-        @keyframes resultFade { 0%{opacity:1} 80%{opacity:1} 100%{opacity:0} }
-        #floor-result-inner { font-size:4rem; font-weight:900; text-shadow:0 0 30px currentColor; }
-        #floor-result.success #floor-result-inner { color:#4ade80; }
-        #floor-result.fail    #floor-result-inner { color:#ef4444; }
+        /* 층 결과 */
+        #floor-result { position:fixed; inset:0; z-index:150;
+            display:none; align-items:center; justify-content:center; pointer-events:none; }
+        #floor-result.show { display:flex; animation:rFade 0.9s ease forwards; }
+        @keyframes rFade { 0%{opacity:1}70%{opacity:1}100%{opacity:0} }
+        #floor-result-txt { font-size:4.5rem; font-weight:900; }
 
-        /* 승리/패배 화면 */
+        /* 종료 화면 */
         #end-screen { background:radial-gradient(circle,#1a0d00,#000); z-index:250; }
         .end-title { font-size:3rem; font-weight:900; text-align:center; }
         .end-sub   { font-size:1.1rem; color:rgba(255,255,255,0.7); text-align:center; line-height:1.6; }
@@ -234,144 +194,127 @@
 </head>
 <body>
 
-<!-- ① 입장 화면 -->
+<!-- ① 입장 -->
 <div id="entry-screen" class="screen">
     <div class="logo">바벨탑</div>
     <div class="logo-sub">언어의 혼잡</div>
     <input id="name-input" type="text" placeholder="이름 입력 (최대 5자)" maxlength="5" autocomplete="off" autocorrect="off">
     <div class="team-row">
-        <button class="team-btn" id="btn-team-a" onclick="selectTeam('A')">🔵 팀 A</button>
-        <button class="team-btn" id="btn-team-b" onclick="selectTeam('B')">🔴 팀 B</button>
+        <button class="team-btn" id="btn-ta" onclick="pickTeam('A')">🔵 팀 A</button>
+        <button class="team-btn" id="btn-tb" onclick="pickTeam('B')">🔴 팀 B</button>
     </div>
-    <button id="join-btn">입장하기</button>
-    <button id="gm-gear-btn" title="GM 입장">⚙</button>
+    <button id="join-btn" onclick="joinGame()">입장하기</button>
+    <button id="gm-gear-btn" title="GM">⚙</button>
 </div>
 
-<!-- 비번 모달 -->
+<!-- 비번 -->
 <div id="pw-modal">
     <div class="pw-box">
         <div class="pw-title">⚙ GM 입장</div>
         <input id="pw-input" type="password" placeholder="••••" maxlength="8" inputmode="numeric">
         <div id="pw-error"></div>
         <div class="pw-btns">
-            <button class="pw-confirm" id="pw-confirm">확인</button>
-            <button class="pw-cancel"  id="pw-cancel">취소</button>
+            <button class="pw-confirm" id="pw-ok">확인</button>
+            <button class="pw-cancel"  id="pw-cx">취소</button>
         </div>
     </div>
 </div>
 
-<!-- ② GM 화면 -->
+<!-- ② GM -->
 <div id="gm-screen" class="screen hidden">
     <div class="gm-header">
-        <div>
-            <div class="gm-header-title">⚙ GM — 바벨탑</div>
-            <div style="font-size:0.75rem;color:#57534e;">언어의 혼잡 게임</div>
-        </div>
+        <div><div class="gm-header-title">⚙ GM — 바벨탑</div>
+             <div style="font-size:0.75rem;color:#57534e;">언어의 혼잡 게임</div></div>
         <button onclick="exitGM()" style="background:none;border:none;color:#44403c;font-size:1.4rem;cursor:pointer;">✕</button>
     </div>
     <div class="gm-body">
-
-        <!-- 팀 현황 -->
         <div class="section-label">팀 현황</div>
         <div class="team-stat-row">
             <div class="team-stat-card" style="border-left:3px solid #3b82f6;">
                 <div class="team-stat-title" style="color:#93c5fd;">🔵 팀 A</div>
-                <div class="team-stat-floor" id="gm-floor-a" style="color:#93c5fd;">-</div>
-                <div class="team-stat-info" id="gm-info-a">대기 중</div>
+                <div class="team-stat-floor" id="gm-fa" style="color:#93c5fd;">-</div>
+                <div class="team-stat-info"  id="gm-ia">대기 중</div>
             </div>
             <div class="team-stat-card" style="border-left:3px solid #ef4444;">
                 <div class="team-stat-title" style="color:#fca5a5;">🔴 팀 B</div>
-                <div class="team-stat-floor" id="gm-floor-b" style="color:#fca5a5;">-</div>
-                <div class="team-stat-info" id="gm-info-b">대기 중</div>
+                <div class="team-stat-floor" id="gm-fb" style="color:#fca5a5;">-</div>
+                <div class="team-stat-info"  id="gm-ib">대기 중</div>
             </div>
         </div>
-
-        <!-- 언어 혼잡 -->
         <div class="section-label">언어의 혼잡</div>
         <div class="confusion-row">
-            <button class="conf-btn active" id="cb0" onclick="setConfusion(0)">정상</button>
-            <button class="conf-btn" id="cb1" onclick="setConfusion(1)">⚠ 1단계</button>
-            <button class="conf-btn" id="cb2" onclick="setConfusion(2)">🔥 2단계</button>
+            <button class="conf-btn active" id="cb0" onclick="setConf(0)">정상</button>
+            <button class="conf-btn"        id="cb1" onclick="setConf(1)">⚠ 1단계</button>
+            <button class="conf-btn"        id="cb2" onclick="setConf(2)">🔥 2단계</button>
         </div>
-        <button id="big-confusion-btn" onclick="setConfusion(2)">⚡ 언어의 혼잡 발동!</button>
-
-        <!-- 게임 제어 -->
+        <button id="big-confusion-btn" onclick="setConf(2)">⚡ 언어의 혼잡 발동!</button>
         <div class="section-label">게임 제어</div>
         <div class="action-row">
             <button class="btn-green" onclick="startGame()">▶ 게임 시작</button>
             <button class="btn-gray"  onclick="resetGame()">↺ 초기화</button>
         </div>
-        <button class="btn-blue" style="width:100%;" onclick="replayGame()">🔄 다시하기</button>
-
-        <!-- 채팅 모니터 -->
+        <button class="btn-blue" style="width:100%;margin-top:0;" onclick="replayGame()">🔄 다시하기</button>
         <div class="section-label">채팅 모니터</div>
         <div class="gm-chats">
-            <div class="gm-chat-box">
-                <div class="gm-chat-title" style="color:#93c5fd;">🔵 팀 A</div>
-                <div id="gm-chat-a"></div>
-            </div>
-            <div class="gm-chat-box">
-                <div class="gm-chat-title" style="color:#fca5a5;">🔴 팀 B</div>
-                <div id="gm-chat-b"></div>
-            </div>
+            <div class="gm-chat-box"><div class="gm-chat-title" style="color:#93c5fd;">🔵 팀 A</div><div id="gmc-a"></div></div>
+            <div class="gm-chat-box"><div class="gm-chat-title" style="color:#fca5a5;">🔴 팀 B</div><div id="gmc-b"></div></div>
         </div>
     </div>
 </div>
 
 <!-- ③ 대기실 -->
 <div id="lobby-screen" class="screen hidden">
-    <div class="lobby-logo">🏗️</div>
-    <div style="font-size:1.8rem;font-weight:900;color:#f59e0b;">바벨탑</div>
-    <div class="lobby-team-badge" id="lobby-team-badge"></div>
+    <div style="font-size:4rem;">🏗️</div>
+    <div style="font-size:2rem;font-weight:900;color:#f59e0b;">바벨탑</div>
+    <div id="lobby-badge" style="padding:0.5rem 1.5rem;border-radius:2rem;font-size:1rem;font-weight:900;"></div>
     <div id="lobby-role" style="font-size:0.9rem;color:#78716c;"></div>
-    <p style="font-size:0.85rem;color:#44403c;text-align:center;">선생님이 시작하면 자동으로 게임이 시작됩니다</p>
-    <p id="lobby-count" style="font-size:0.8rem;color:#292524;"></p>
+    <div style="font-size:0.85rem;color:#44403c;text-align:center;">선생님이 시작하면 자동으로 게임이 시작됩니다</div>
+    <div id="lobby-cnt" style="font-size:0.8rem;color:#292524;"></div>
 </div>
 
 <!-- 혼잡 배너 -->
-<div id="confusion-banner"></div>
-
-<!-- 층 결과 오버레이 -->
-<div id="floor-result"><div id="floor-result-inner"></div></div>
+<div id="conf-banner"></div>
+<!-- 층 결과 -->
+<div id="floor-result"><div id="floor-result-txt"></div></div>
 
 <!-- ④ 팀장 화면 -->
 <div id="leader-screen" class="screen hidden">
-    <div class="game-header" id="leader-header"></div>
-    <div id="leader-color-display">
-        <div class="color-label-small">이번 층 색깔 (채팅으로 알려주세요!)</div>
-        <div class="current-color-box" id="leader-color-box">-</div>
-        <div class="color-label-small" id="leader-floor-info"></div>
+    <div class="game-header" id="ldr-header"></div>
+    <div id="leader-color-box">
+        <div class="color-hint">이번 층 색깔 — 채팅으로 팀원에게 알려주세요!</div>
+        <div class="cur-color" id="cur-color-box">-</div>
+        <div class="color-hint" id="floor-hint-ldr"></div>
     </div>
     <div class="chat-area">
-        <div class="chat-title" id="leader-chat-title">💬 팀 채팅 (팀장)</div>
-        <div class="chat-messages" id="leader-chat-messages"></div>
-        <div class="chat-input-row">
-            <input id="leader-chat-input" type="text" placeholder="색깔 이름을 입력하세요..." maxlength="30" autocomplete="off">
-            <button class="chat-send-btn" onclick="sendChat()">전송</button>
+        <div class="chat-label">💬 팀 채팅 (팀장)</div>
+        <div class="chat-msgs" id="chat-ldr"></div>
+        <div class="chat-row">
+            <input class="chat-inp" id="inp-ldr" placeholder="색깔 이름을 입력하세요..." maxlength="30" autocomplete="off">
+            <button class="chat-send" onclick="sendChat('leader')">전송</button>
         </div>
     </div>
 </div>
 
 <!-- ⑤ 팀원 화면 -->
 <div id="member-screen" class="screen hidden">
-    <div class="game-header" id="member-header"></div>
-    <div id="color-buttons">
+    <div class="game-header" id="mbr-header"></div>
+    <div id="color-btns-area">
         <div class="color-grid" id="color-grid"></div>
     </div>
     <div class="chat-area">
-        <div class="chat-title" id="member-chat-title">💬 팀 채팅</div>
-        <div class="chat-messages" id="member-chat-messages"></div>
-        <div class="chat-input-row">
-            <input id="member-chat-input" type="text" placeholder="채팅 입력..." maxlength="20" autocomplete="off">
-            <button class="chat-send-btn" onclick="sendMemberChat()">전송</button>
+        <div class="chat-label">💬 팀 채팅 — 팀장 메시지를 읽고 색깔을 누르세요!</div>
+        <div class="chat-msgs" id="chat-mbr"></div>
+        <div class="chat-row">
+            <input class="chat-inp" id="inp-mbr" placeholder="채팅..." maxlength="20" autocomplete="off">
+            <button class="chat-send" onclick="sendChat('member')">전송</button>
         </div>
     </div>
 </div>
 
-<!-- ⑥ 종료 화면 -->
+<!-- ⑥ 종료 -->
 <div id="end-screen" class="screen hidden">
     <div id="end-title" class="end-title"></div>
-    <div id="end-sub" class="end-sub"></div>
+    <div id="end-sub"   class="end-sub"></div>
     <div class="end-verse">
         "이는 온 땅의 언어를 거기서 혼잡하게 하셨음이니라"<br>
         <span style="font-size:0.8rem;color:#a78bfa;">— 창세기 11:9</span>
@@ -379,14 +322,14 @@
 </div>
 
 <script type="module">
-import { initializeApp }   from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+import { initializeApp }  from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
 import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 import {
     getFirestore, doc, setDoc, updateDoc, getDoc, onSnapshot, addDoc,
-    collection, query, orderBy, limit, writeBatch, getDocs, deleteDoc,
-    runTransaction, serverTimestamp
+    collection, query, orderBy, limit, writeBatch, getDocs, serverTimestamp
 } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
+// ── Firebase ──────────────────────────────────────────
 const FB = initializeApp({
     apiKey:"AIzaSyCfyjgtiDVD4Wsd9iGb9tEdrOGFYxxN2Tw",
     authDomain:"kingdomgenius.firebaseapp.com",
@@ -397,487 +340,475 @@ const FB = initializeApp({
 });
 const auth = getAuth(FB);
 const db   = getFirestore(FB);
+const STATE   = doc(db,'kingdom_genius_games','babel_room','data','state');
+const TEAMDOC = t => doc(db,'kingdom_genius_games','babel_room','teams',t);
+const PDOC    = uid => doc(db,'kingdom_genius_games','babel_room','players',uid);
+const PCOL    = collection(db,'kingdom_genius_games','babel_room','players');
+const CHATCOL = t => collection(db,'kingdom_genius_games','babel_room','chat'+t);
 
-const STATE_REF  = doc(db,'kingdom_genius_games','babel_room','data','state');
-const TEAM_REF   = t => doc(db,'kingdom_genius_games','babel_room','teams',t);
-const PLAYERS    = collection(db,'kingdom_genius_games','babel_room','players');
-const PLAYER_REF = uid => doc(db,'kingdom_genius_games','babel_room','players',uid);
-const CHAT_COL   = t => collection(db,'kingdom_genius_games','babel_room','chat'+t);
-
-// ── 색깔 설정 ────────────────────────────────────────
+// ── 색깔 ─────────────────────────────────────────────
 const COLORS = [
-    { id:'red',    label:'빨간색', hex:'#ef4444' },
-    { id:'orange', label:'주황색', hex:'#f97316' },
-    { id:'yellow', label:'노란색', hex:'#eab308' },
-    { id:'green',  label:'초록색', hex:'#22c55e' },
-    { id:'blue',   label:'파란색', hex:'#3b82f6' },
-    { id:'indigo', label:'남색',   hex:'#6366f1' },
-    { id:'violet', label:'보라색', hex:'#a855f7' },
+    {id:'red',    label:'빨간색', hex:'#ef4444'},
+    {id:'orange', label:'주황색', hex:'#f97316'},
+    {id:'yellow', label:'노란색', hex:'#eab308'},
+    {id:'green',  label:'초록색', hex:'#22c55e'},
+    {id:'blue',   label:'파란색', hex:'#3b82f6'},
+    {id:'indigo', label:'남색',   hex:'#6366f1'},
+    {id:'violet', label:'보라색', hex:'#a855f7'},
 ];
-const COLOR_MAP = {};
-COLORS.forEach(c=>{ COLOR_MAP[c.id]=c; });
-const MAX_FLOOR = 100;
-const FLOOR_TIME = 15000; // 15초
+const CMAP = {}; COLORS.forEach(c=>{ CMAP[c.id]=c; });
+const MAX_FLOOR = 100, FLOOR_MS = 15000;
 
 // ── 혼잡 스크램블 ─────────────────────────────────────
-const FOREIGN = 'אבגדהוזחטיכלמنسعغفقكلمنهويابتثجحخدذرزسشصضطظعغᚠᚡᚢᚣᚤᚥᚦᛒᛗᛚᛏᛋᛁᚻᚹᚷᚳᚱ𒀭𒀮𒈙𒈚𒈛𒈜∰∱≋≌≍≎∿∾∽∻';
-function scramble(text, level) {
-    if (!level) return text;
-    const ratio = level === 1 ? 0.65 : 1.0;
-    return [...text].map(c => {
-        if (c === ' ' && level < 2) return c;
-        return Math.random() < ratio
-            ? FOREIGN[Math.floor(Math.random()*FOREIGN.length)] : c;
-    }).join('');
+const FOREIGN = 'אבגדהוזחטיכלמנسعغفقابتجحخدذرزسشصضᚠᚡᚢᚣᚤᚥᚦᛒᛗᛚᛋᛁᚻᚷᚳᚱ𒀭𒀮𒈙𒈚𒈛∰∱≋≌∿∾';
+function scramble(t, lv) {
+    if (!lv) return t;
+    const r = lv===1 ? 0.65 : 1.0;
+    return [...t].map(c => (c===' '&&lv<2) ? c : Math.random()<r ? FOREIGN[Math.floor(Math.random()*FOREIGN.length)] : c).join('');
 }
 
 // ── 블루프린트 생성 ───────────────────────────────────
-function generateBlueprint() {
+function genBP() {
     const ids = COLORS.map(c=>c.id);
     return Array.from({length:MAX_FLOOR}, ()=> ids[Math.floor(Math.random()*ids.length)]);
 }
 
 // ── 상태 변수 ─────────────────────────────────────────
-let myUid=null, myName='', myTeam=null, myRole=null; // 'leader'|'member'
-let isGM=false, listenersSetup=false, hasJoined=false;
-let gameStatus='lobby', confusionLevel=0;
-let myTeamData=null;
-let timerInterval=null, lastProcessedFloor=-1;
+let myUid=null, myName='', myTeam=null, myRole=null;
+let isGM=false, listenersSetup=false;
+let gameStatus='lobby', confLv=0;
+let myTeamData=null; // 로컬 캐시 — Firebase 스냅샷으로 항상 최신 유지
+let timerIv=null, lastProcFloor=-1;
 let selectedTeam=null;
+let advancing=false; // 이중 클릭 방지
 
 // ── 색깔 버튼 생성 ───────────────────────────────────
-(function buildColorGrid(){
+(function(){
     const grid=document.getElementById('color-grid');
     COLORS.forEach(c=>{
         const btn=document.createElement('button');
-        btn.className='color-btn'; btn.dataset.cid=c.id;
+        btn.className='cbtn'; btn.dataset.cid=c.id;
         btn.style.background=c.hex;
         btn.textContent=c.label;
         btn.addEventListener('click', ()=>pressColor(c.id));
         grid.appendChild(btn);
     });
-    // 빈칸 (7개라서 4열 그리드에 맞게)
-    const empty=document.createElement('div');
-    grid.appendChild(empty);
+    // 7번째 칸 빈칸 (4열 그리드)
+    grid.appendChild(document.createElement('div'));
 })();
 
 // ── 팀 선택 ──────────────────────────────────────────
-window.selectTeam = function(t) {
-    selectedTeam = t;
-    document.getElementById('btn-team-a').className='team-btn'+(t==='A'?' selected-A':'');
-    document.getElementById('btn-team-b').className='team-btn'+(t==='B'?' selected-B':'');
+window.pickTeam = function(t){
+    selectedTeam=t;
+    document.getElementById('btn-ta').className='team-btn'+(t==='A'?' selA':'');
+    document.getElementById('btn-tb').className='team-btn'+(t==='B'?' selB':'');
 };
 
 // ── 화면 전환 ─────────────────────────────────────────
-function showScreen(which){
+function go(id){
     ['entry-screen','lobby-screen','gm-screen','leader-screen','member-screen','end-screen']
-        .forEach(id=>document.getElementById(id).classList.add('hidden'));
-    document.getElementById(which).classList.remove('hidden');
+        .forEach(x=>document.getElementById(x).classList.add('hidden'));
+    document.getElementById(id).classList.remove('hidden');
 }
 
 // ── 타이머 ────────────────────────────────────────────
-function startTimer(timerEnd, floor) {
-    if (timerInterval) clearInterval(timerInterval);
-    timerInterval = setInterval(async ()=>{
-        const remaining = Math.max(0, timerEnd - Date.now());
-        updateTimerUI(remaining);
-        if (remaining <= 0 && lastProcessedFloor !== floor) {
-            lastProcessedFloor = floor;
-            clearInterval(timerInterval);
-            await handleTimerExpiry(floor);
-        }
-    }, 100);
-}
-function updateTimerUI(ms) {
-    const sec = Math.ceil(ms/1000);
-    const el1=document.getElementById('timer-leader');
-    const el2=document.getElementById('timer-member');
-    const cls = sec>8?'timer-ok':sec>4?'timer-warn':'timer-crit';
-    [el1,el2].forEach(el=>{ if(el){ el.textContent=sec+'초'; el.className='timer-badge '+cls; } });
-}
-async function handleTimerExpiry(floor) {
-    if (!myTeam) return;
-    try {
-        await runTransaction(db, async tx=>{
-            const snap=await tx.get(TEAM_REF(myTeam));
-            const d=snap.data();
-            if (!d||d.floor!==floor||d.floorStatus!=='active') return;
-            if (Date.now() < d.timerEnd - 500) return;
-            const nf=Math.max(1,d.floor-1);
-            tx.update(TEAM_REF(myTeam),{
-                floor:nf, floorStatus:'active',
-                timerEnd:Date.now()+FLOOR_TIME,
-            });
+function startTimer(timerEnd, floor){
+    if(timerIv) clearInterval(timerIv);
+    timerIv=setInterval(async()=>{
+        const rem=Math.max(0, timerEnd-Date.now());
+        const sec=Math.ceil(rem/1000);
+        const cls=sec>8?'t-ok':sec>4?'t-warn':'t-crit';
+        ['timer-ldr','timer-mbr'].forEach(id=>{
+            const el=document.getElementById(id);
+            if(el){ el.textContent=sec+'초'; el.className='timer-el '+cls; }
         });
-    } catch(_){}
-    showFloorResult(false);
+        // 시간 초과 처리 — 이 클라이언트가 먼저 감지하면 처리
+        if(rem<=0 && lastProcFloor!==floor){
+            lastProcFloor=floor;
+            clearInterval(timerIv);
+            await handleExpiry(floor);
+        }
+    },100);
+}
+
+async function handleExpiry(floor){
+    if(!myTeam||!myTeamData) return;
+    // myTeamData가 아직 해당 층인지 확인
+    if(myTeamData.floor!==floor||myTeamData.floorStatus!=='active') return;
+    const newFloor=Math.max(1,floor-1);
+    try{
+        await updateDoc(TEAMDOC(myTeam),{
+            floor:newFloor,
+            floorStatus:'active',
+            timerEnd:Date.now()+FLOOR_MS,
+        });
+    }catch(e){}
+    showResult(false);
+}
+
+// ── 색깔 누르기 (팀원 전용) ──────────────────────────
+async function pressColor(cid){
+    // 1) 기본 상태 점검
+    if(gameStatus!=='playing'){
+        flashButton(cid,'wrong'); return;
+    }
+    // 2) 팀장은 색깔 버튼 화면을 볼 수 없으므로 여기까지 오면 항상 팀원
+    //    만약을 위해 myRole 체크 유지 (팀장이라면 아무것도 안 함)
+    if(myRole==='leader') return;
+
+    // 3) myTeamData 점검 — 스냅샷 리스너가 항상 최신 데이터 유지
+    if(!myTeamData){
+        flashButton(cid,'wrong'); return;
+    }
+    if(myTeamData.floorStatus!=='active'){
+        flashButton(cid,'wrong'); return;
+    }
+
+    // 4) 정답 확인
+    const req = myTeamData.blueprint?.[myTeamData.floor-1];
+    if(!req){
+        flashButton(cid,'wrong'); return;
+    }
+
+    if(cid!==req){
+        // 오답 — 흔들림
+        flashButton(cid,'wrong');
+        return;
+    }
+
+    // 5) 정답! 이중 클릭 방지
+    if(advancing) return;
+    advancing=true;
+
+    flashButton(cid,'correct');
+
+    const newFloor=myTeamData.floor+1;
+    const newColors=[...(myTeamData.completedColors||[]).slice(-29), cid];
+
+    try{
+        if(newFloor>MAX_FLOOR){
+            await updateDoc(TEAMDOC(myTeam),{floorStatus:'won', completedColors:newColors});
+        } else {
+            await updateDoc(TEAMDOC(myTeam),{
+                floor:newFloor,
+                floorStatus:'active',
+                timerEnd:Date.now()+FLOOR_MS,
+                completedColors:newColors,
+            });
+        }
+        showResult(true);
+    }catch(e){
+        console.error('pressColor error:',e);
+    }finally{
+        setTimeout(()=>{ advancing=false; },600);
+    }
+}
+
+function flashButton(cid, type){
+    const btn=document.querySelector(`.cbtn[data-cid="${cid}"]`);
+    if(!btn) return;
+    btn.classList.remove('wrong','correct');
+    void btn.offsetWidth; // reflow
+    btn.classList.add(type);
+    setTimeout(()=>btn.classList.remove(type),400);
 }
 
 // ── 결과 애니메이션 ───────────────────────────────────
-function showFloorResult(success) {
+function showResult(ok){
     const el=document.getElementById('floor-result');
-    el.className=''; el.classList.add('show',success?'success':'fail');
-    document.getElementById('floor-result-inner').textContent=success?'✅ 층 완성!':'❌ 무너짐!';
-    setTimeout(()=>{el.className='';},900);
+    const txt=document.getElementById('floor-result-txt');
+    el.className='';
+    txt.textContent=ok?'✅ 층 완성!':'❌ 무너짐!';
+    txt.style.color=ok?'#4ade80':'#ef4444';
+    el.classList.add('show');
+    setTimeout(()=>el.className='',950);
 }
 
-// ── 색깔 누르기 (팀원) ───────────────────────────────
-async function pressColor(colorId) {
-    if (gameStatus!=='playing'||myRole!=='member') return;
-    try {
-        let correct=false;
-        await runTransaction(db, async tx=>{
-            const snap=await tx.get(TEAM_REF(myTeam));
-            const d=snap.data();
-            if(!d||d.floorStatus!=='active') return;
-            if(Date.now()>d.timerEnd) return;
-            const req=d.blueprint[d.floor-1];
-            if(colorId!==req){ return; } // 오답: 아무것도 안함 (타이머는 계속)
-            correct=true;
-            const nf=d.floor+1;
-            const newColors=[...(d.completedColors||[]).slice(-29), colorId];
-            if(nf>MAX_FLOOR){
-                tx.update(TEAM_REF(myTeam),{floorStatus:'won', completedColors:newColors});
-            } else {
-                tx.update(TEAM_REF(myTeam),{
-                    floor:nf, floorStatus:'active',
-                    timerEnd:Date.now()+FLOOR_TIME,
-                    completedColors:newColors
-                });
-            }
-        });
-        if(correct) showFloorResult(true);
-        else {
-            // 오답 피드백
-            const btn=document.querySelector(`.color-btn[data-cid="${colorId}"]`);
-            if(btn){ btn.classList.add('wrong'); setTimeout(()=>btn.classList.remove('wrong'),400); }
-        }
-    } catch(_){}
-}
-
-// ── 채팅 전송 (팀장) ─────────────────────────────────
-window.sendChat = async function() {
-    const inp=document.getElementById('leader-chat-input');
+// ── 채팅 전송 ─────────────────────────────────────────
+window.sendChat=async function(who){
+    const inp=document.getElementById(who==='leader'?'inp-ldr':'inp-mbr');
     const raw=inp.value.trim(); if(!raw) return;
     inp.value='';
-    const text=scramble(raw, confusionLevel);
-    await addDoc(CHAT_COL(myTeam),{ sender:myName, text, isLeader:true, ts:Date.now() });
+    const text=scramble(raw,confLv);
+    const isLdr=(myRole==='leader');
+    await addDoc(CHATCOL(myTeam),{sender:myName,text,isLeader:isLdr,ts:Date.now()});
 };
-document.getElementById('leader-chat-input').addEventListener('keypress',e=>{if(e.key==='Enter')window.sendChat();});
+document.getElementById('inp-ldr').addEventListener('keypress',e=>{if(e.key==='Enter')window.sendChat('leader');});
+document.getElementById('inp-mbr').addEventListener('keypress',e=>{if(e.key==='Enter')window.sendChat('member');});
 
-// 팀원 채팅
-window.sendMemberChat = async function() {
-    const inp=document.getElementById('member-chat-input');
-    const raw=inp.value.trim(); if(!raw) return;
-    inp.value='';
-    const text=scramble(raw, confusionLevel);
-    await addDoc(CHAT_COL(myTeam),{ sender:myName, text, isLeader:false, ts:Date.now() });
-};
-document.getElementById('member-chat-input').addEventListener('keypress',e=>{if(e.key==='Enter')window.sendMemberChat();});
-
-// ── 채팅 메시지 렌더 ─────────────────────────────────
-function renderChat(msgs, containerId, isLeaderScreen) {
-    const container=document.getElementById(containerId);
-    container.innerHTML='';
+// ── 채팅 렌더 ─────────────────────────────────────────
+function renderChat(msgs, cid){
+    const el=document.getElementById(cid);
+    el.innerHTML='';
     msgs.forEach(m=>{
         const div=document.createElement('div');
-        const isMe=(m.sender===myName);
-        div.className='chat-msg '+(isMe?'from-me':m.isLeader?'from-leader':'from-other');
-        div.innerHTML=`<div class="sender-name">${m.isLeader?'👑 '+m.sender:m.sender}</div>${m.text}`;
-        container.appendChild(div);
+        const isMe=m.sender===myName;
+        div.className='cmsg '+(isMe?'me':m.isLeader?'leader':'other');
+        div.innerHTML=`<div class="who">${m.isLeader?'👑 ':''}${m.sender}</div>${m.text}`;
+        el.appendChild(div);
     });
-    container.scrollTop=container.scrollHeight;
+    el.scrollTop=el.scrollHeight;
+}
+
+// ── GM 채팅 렌더 ─────────────────────────────────────
+function renderGMChat(team, msgs){
+    const el=document.getElementById(`gmc-${team.toLowerCase()}`);
+    el.innerHTML=msgs.slice(-8).map(m=>`<div class="gm-chat-msg"><b>${m.sender}:</b> ${m.text}</div>`).join('');
+    el.scrollTop=el.scrollHeight;
 }
 
 // ── 게임 헤더 렌더 ───────────────────────────────────
-function renderGameHeader(floor, isLeader) {
-    const teamLabel=myTeam==='A'?'🔵 팀 A':'🔴 팀 B';
-    const roleLabel=isLeader?'👑 팀장':'팀원';
-    const roleBg=isLeader?'background:#1e3058;color:#93c5fd':'background:#1a2e1a;color:#86efac';
+function renderHeader(floor, isLdr){
+    const tl=myTeam==='A'?'🔵 팀 A':'🔴 팀 B';
+    const rl=isLdr?'👑 팀장':'팀원';
+    const rs=isLdr?'background:#1e3058;color:#93c5fd':'background:#1a2e1a;color:#86efac';
     const html=`
-        <div style="display:flex;align-items:center;gap:0.5rem;">
-            <span class="floor-badge">${teamLabel} · ${floor}층</span>
-            <span class="role-badge" style="${roleBg}">${roleLabel}</span>
-        </div>
-        <span class="timer-badge timer-ok" id="timer-${isLeader?'leader':'member'}">15초</span>
+        <div><span class="floor-info">${tl} · ${floor}층</span>
+             <span class="role-tag" style="${rs}">${rl}</span></div>
+        <span class="timer-el t-ok" id="timer-${isLdr?'ldr':'mbr'}">15초</span>
     `;
-    document.getElementById(isLeader?'leader-header':'member-header').innerHTML=html;
+    document.getElementById(isLdr?'ldr-header':'mbr-header').innerHTML=html;
 }
 
-// ── 팀장 색깔 UI 업데이트 ────────────────────────────
-function updateLeaderColorUI(floor, blueprint) {
-    if(!blueprint||floor<1||floor>MAX_FLOOR) return;
-    const colorId=blueprint[floor-1];
-    const c=COLOR_MAP[colorId];
-    if(!c) return;
-    const box=document.getElementById('leader-color-box');
-    box.style.background=c.hex;
-    box.style.boxShadow=`0 0 30px ${c.hex}`;
+// ── 팀장 색깔 UI ─────────────────────────────────────
+function updateLeaderColor(floor, bp){
+    if(!bp||floor<1||floor>MAX_FLOOR) return;
+    const c=CMAP[bp[floor-1]]; if(!c) return;
+    const box=document.getElementById('cur-color-box');
+    box.style.background=c.hex; box.style.boxShadow=`0 0 30px ${c.hex}`;
     box.textContent=c.label;
-    document.getElementById('leader-floor-info').textContent=`${floor}층 / ${MAX_FLOOR}층`;
+    document.getElementById('floor-hint-ldr').textContent=`${floor}층 / ${MAX_FLOOR}층`;
 }
 
-// ── 혼잡 배너 UI ─────────────────────────────────────
-function updateConfusionBanner(level) {
-    const b=document.getElementById('confusion-banner');
+// ── 혼잡 배너 ─────────────────────────────────────────
+function updateConfBanner(lv){
+    const b=document.getElementById('conf-banner');
     b.className='';
-    if(level===1){ b.className='level1'; b.textContent='⚠ 언어의 혼잡 1단계 — 채팅이 이상해지고 있습니다...'; }
-    else if(level===2){ b.className='level2'; b.textContent='🔥 언어의 혼잡 2단계 — אבג ᚠᚡᚢ 𒀭𒀮𒈙 말이 통하지 않습니다!'; }
+    if(lv===1){b.className='l1';b.textContent='⚠ 언어의 혼잡 1단계 — 채팅이 이상해지고 있습니다...';}
+    else if(lv===2){b.className='l2';b.textContent='🔥 언어의 혼잡 2단계 — אבג ᚠᚡᚢ 𒀭𒀮 말이 통하지 않습니다!';}
+}
+function updateGMConfUI(lv){
+    [0,1,2].forEach(i=>{
+        const b=document.getElementById(`cb${i}`);
+        if(b) b.classList.toggle('active',i===lv);
+    });
 }
 
 // ── Firestore 리스너 ─────────────────────────────────
-function setupListeners() {
+function setupListeners(){
     if(listenersSetup) return; listenersSetup=true;
 
     // 게임 상태
-    onSnapshot(STATE_REF, snap=>{
+    onSnapshot(STATE, snap=>{
         if(!snap.exists()) return;
         const d=snap.data();
-        const ns=d.gameStatus||'lobby', nl=d.confusionLevel||0;
-        confusionLevel=nl;
-        updateConfusionBanner(nl);
-        updateGMConfusionUI(nl);
+        const ns=d.gameStatus||'lobby';
+        const nl=d.confusionLevel||0;
+        confLv=nl; updateConfBanner(nl); updateGMConfUI(nl);
 
-        if(ns==='reset'){
-            if(!isGM){ myTeam=null; myRole=null; hasJoined=false; listenersSetup=false;
-                document.getElementById('name-input').value=''; showScreen('entry-screen'); }
+        if(ns==='reset'&&!isGM){
+            myTeam=null; myRole=null; listenersSetup=false;
+            document.getElementById('name-input').value='';
+            go('entry-screen');
         } else if(ns==='playing'&&gameStatus!=='playing'&&!isGM){
-            if(myRole==='leader') showScreen('leader-screen');
-            else if(myRole==='member') showScreen('member-screen');
+            if(myRole==='leader') go('leader-screen');
+            else go('member-screen');
         } else if(ns==='lobby'&&gameStatus==='playing'&&!isGM){
-            showScreen('lobby-screen');
+            go('lobby-screen');
         } else if(d.winner&&!isGM){
-            showEndScreen(d.winner);
+            showEnd(d.winner);
         }
         gameStatus=ns;
     });
 
-    // 내 팀 상태
+    // 내 팀 스냅샷 — 항상 최신 myTeamData 유지
     if(myTeam){
-        onSnapshot(TEAM_REF(myTeam), snap=>{
+        onSnapshot(TEAMDOC(myTeam), snap=>{
             if(!snap.exists()) return;
             const d=snap.data();
-            myTeamData=d;
+            myTeamData=d; // ← 핵심: pressColor가 이 값을 사용
 
-            renderGameHeader(d.floor, myRole==='leader');
-
-            if(myRole==='leader') updateLeaderColorUI(d.floor, d.blueprint);
+            renderHeader(d.floor, myRole==='leader');
+            if(myRole==='leader') updateLeaderColor(d.floor, d.blueprint);
 
             if(d.floorStatus==='active'&&d.timerEnd>0){
                 startTimer(d.timerEnd, d.floor);
             }
-            if(d.floorStatus==='won') {
-                // 승리 처리는 GM 쪽에서
-            }
-
-            // GM 현황 업데이트
-            if(isGM) updateGMTeamCard(myTeam,d);
+            if(isGM) updateGMCard('A',d);
         });
 
-        // 상대 팀 현황 (GM용)
-        const otherTeam=myTeam==='A'?'B':'A';
-        onSnapshot(TEAM_REF(otherTeam), snap=>{
-            if(snap.exists()&&isGM) updateGMTeamCard(otherTeam,snap.data());
-        });
-
-        // 채팅
-        const chatQ=query(CHAT_COL(myTeam),orderBy('ts','asc'),limit(30));
-        onSnapshot(chatQ, snap=>{
+        // 채팅 스냅샷
+        const cq=query(CHATCOL(myTeam),orderBy('ts','asc'),limit(40));
+        onSnapshot(cq, snap=>{
             const msgs=snap.docs.map(d=>d.data());
-            renderChat(msgs,'leader-chat-messages', true);
-            renderChat(msgs,'member-chat-messages', false);
-            if(isGM) renderGMChat(myTeam, msgs);
+            renderChat(msgs,'chat-ldr');
+            renderChat(msgs,'chat-mbr');
+            if(isGM) renderGMChat(myTeam,msgs);
         });
     }
 
-    // GM 전용 리스너
+    // GM 전용: 양 팀 + 채팅 모두 감시
     if(isGM){
         ['A','B'].forEach(t=>{
-            onSnapshot(TEAM_REF(t), snap=>{
-                if(snap.exists()) updateGMTeamCard(t,snap.data());
-                // 승리 감지
-                if(snap.exists()&&snap.data().floorStatus==='won'){
-                    setDoc(STATE_REF,{gameStatus:'ended',winner:t,confusionLevel},{merge:true});
+            onSnapshot(TEAMDOC(t), snap=>{
+                if(snap.exists()){
+                    updateGMCard(t,snap.data());
+                    if(snap.data().floorStatus==='won'){
+                        setDoc(STATE,{gameStatus:'ended',winner:t,confusionLevel:confLv},{merge:true});
+                    }
                 }
             });
-            const chatQ=query(CHAT_COL(t),orderBy('ts','asc'),limit(20));
-            onSnapshot(chatQ, snap=>{
-                renderGMChat(t, snap.docs.map(d=>d.data()));
+            const cq=query(CHATCOL(t),orderBy('ts','asc'),limit(20));
+            onSnapshot(cq, snap=>{
+                renderGMChat(t,snap.docs.map(d=>d.data()));
             });
         });
-        onSnapshot(PLAYERS, snap=>{
-            const count={A:0,B:0};
-            snap.forEach(d=>{ const t=d.data().team; if(t) count[t]++; });
-            document.getElementById('lobby-count').textContent=`A: ${count.A}명 / B: ${count.B}명`;
+        onSnapshot(PCOL, snap=>{
+            const cnt={A:0,B:0};
+            snap.forEach(d=>{const t=d.data().team;if(t)cnt[t]++;});
+            document.getElementById('lobby-cnt').textContent=`A: ${cnt.A}명 / B: ${cnt.B}명`;
         });
     }
 }
 
-function updateGMTeamCard(team, d) {
-    const floor=d.floor||'-';
-    const leader=d.leaderName||'없음';
-    const colorId=d.blueprint&&d.floor?d.blueprint[d.floor-1]:null;
-    const c=colorId?COLOR_MAP[colorId]:null;
-    document.getElementById(`gm-floor-${team.toLowerCase()}`).textContent=floor+'층';
-    document.getElementById(`gm-info-${team.toLowerCase()}`).innerHTML=
-        `팀장: ${leader} · ${d.memberCount||0}명`+
-        (c?` · <span class="team-stat-color" style="background:${c.hex}"></span>${c.label}`:'');
-}
-function renderGMChat(team, msgs) {
-    const el=document.getElementById(`gm-chat-${team.toLowerCase()}`);
-    el.innerHTML=msgs.slice(-6).map(m=>`<div class="gm-chat-msg"><b>${m.sender}:</b> ${m.text}</div>`).join('');
-    el.scrollTop=el.scrollHeight;
-}
-function updateGMConfusionUI(level) {
-    [0,1,2].forEach(i=>{
-        const btn=document.getElementById(`cb${i}`);
-        if(btn) btn.classList.toggle('active',i===level);
-    });
+function updateGMCard(t, d){
+    document.getElementById(`gm-f${t.toLowerCase()}`).textContent=(d.floor||0)+'층';
+    const cid=d.blueprint&&d.floor?d.blueprint[d.floor-1]:null;
+    const lbl=cid&&CMAP[cid]?CMAP[cid].label:'?';
+    document.getElementById(`gm-i${t.toLowerCase()}`).textContent=
+        `팀장: ${d.leaderName||'없음'} · ${d.memberCount||0}명`+(d.floorStatus==='active'?` · 현재색:${lbl}`:'');
 }
 
-function showEndScreen(winner) {
-    const isMyTeamWinner=(winner===myTeam);
-    document.getElementById('end-title').textContent=
-        isMyTeamWinner?'🏆 우승!':'💔 무너졌습니다';
-    document.getElementById('end-title').style.color=isMyTeamWinner?'#f59e0b':'#ef4444';
+function showEnd(winner){
+    const isWinner=winner===myTeam;
+    document.getElementById('end-title').textContent=isWinner?'🏆 우승!':'💔 무너졌습니다';
+    document.getElementById('end-title').style.color=isWinner?'#f59e0b':'#ef4444';
     document.getElementById('end-sub').innerHTML=
         `팀 ${winner}가 100층 바벨탑을 완성했습니다!<br>하지만 곧이어 하나님의 심판이 임했습니다...`;
-    showScreen('end-screen');
+    go('end-screen');
 }
 
 // ── GM 액션 ──────────────────────────────────────────
-window.setConfusion = async function(level) {
-    confusionLevel=level;
-    await updateDoc(STATE_REF,{confusionLevel:level});
-    updateGMConfusionUI(level);
+window.setConf=async function(lv){
+    confLv=lv; updateGMConfUI(lv);
+    await updateDoc(STATE,{confusionLevel:lv});
 };
 
-window.startGame = async function() {
-    const bpA=generateBlueprint(), bpB=generateBlueprint();
-    const now=Date.now();
-    await setDoc(TEAM_REF('A'),{ floor:1, blueprint:bpA,
-        timerEnd:now+FLOOR_TIME, floorStatus:'active', completedColors:[],
-        leaderUid:''/*preserved*/, leaderName:'', memberCount:0 },{merge:true});
-    await setDoc(TEAM_REF('B'),{ floor:1, blueprint:bpB,
-        timerEnd:now+FLOOR_TIME, floorStatus:'active', completedColors:[],
-        leaderUid:''/*preserved*/, leaderName:'', memberCount:0 },{merge:true});
-    // 팀장 정보 복원
-    const snapA=await getDoc(TEAM_REF('A')); const snapB=await getDoc(TEAM_REF('B'));
-    // Re-read player collection to get leader info
-    const pSnap=await getDocs(PLAYERS);
+window.startGame=async function(){
+    // 1) 팀장 정보 먼저 읽기 (레이스 컨디션 방지)
+    const pSnap=await getDocs(PCOL);
     let lA={uid:'',name:''}, lB={uid:'',name:''};
     pSnap.forEach(d=>{
         const p=d.data();
         if(p.isLeader&&p.team==='A') lA={uid:d.id,name:p.name};
         if(p.isLeader&&p.team==='B') lB={uid:d.id,name:p.name};
     });
-    await updateDoc(TEAM_REF('A'),{leaderUid:lA.uid,leaderName:lA.name});
-    await updateDoc(TEAM_REF('B'),{leaderUid:lB.uid,leaderName:lB.name});
-    await setDoc(STATE_REF,{gameStatus:'playing',confusionLevel:0,winner:null});
+    // 2) 팀 문서 완전 교체 (merge 없이) — leaderUid 보존
+    const bpA=genBP(), bpB=genBP(), now=Date.now();
+    await setDoc(TEAMDOC('A'),{floor:1,blueprint:bpA,timerEnd:now+FLOOR_MS,
+        floorStatus:'active',completedColors:[],leaderUid:lA.uid,leaderName:lA.name,memberCount:0});
+    await setDoc(TEAMDOC('B'),{floor:1,blueprint:bpB,timerEnd:now+FLOOR_MS,
+        floorStatus:'active',completedColors:[],leaderUid:lB.uid,leaderName:lB.name,memberCount:0});
+    // 3) 게임 상태 변경
+    await setDoc(STATE,{gameStatus:'playing',confusionLevel:0,winner:null});
 };
 
-window.replayGame = async function() {
-    const bpA=generateBlueprint(), bpB=generateBlueprint();
-    const now=Date.now();
-    const batch=writeBatch(db);
-    batch.set(TEAM_REF('A'),{ floor:1, blueprint:bpA, timerEnd:now+FLOOR_TIME,
-        floorStatus:'active', completedColors:[], leaderUid:'', leaderName:'', memberCount:0 },{merge:true});
-    batch.set(TEAM_REF('B'),{ floor:1, blueprint:bpB, timerEnd:now+FLOOR_TIME,
-        floorStatus:'active', completedColors:[], leaderUid:'', leaderName:'', memberCount:0 },{merge:true});
-    await batch.commit();
-    // 팀장 정보 복원
-    const pSnap=await getDocs(PLAYERS);
+window.replayGame=async function(){
+    const pSnap=await getDocs(PCOL);
     let lA={uid:'',name:''}, lB={uid:'',name:''};
-    pSnap.forEach(d=>{ const p=d.data();
+    pSnap.forEach(d=>{
+        const p=d.data();
         if(p.isLeader&&p.team==='A') lA={uid:d.id,name:p.name};
         if(p.isLeader&&p.team==='B') lB={uid:d.id,name:p.name};
     });
-    await updateDoc(TEAM_REF('A'),{leaderUid:lA.uid,leaderName:lA.name});
-    await updateDoc(TEAM_REF('B'),{leaderUid:lB.uid,leaderName:lB.name});
-    await setDoc(STATE_REF,{gameStatus:'playing',confusionLevel:0,winner:null});
+    const bpA=genBP(), bpB=genBP(), now=Date.now();
+    const batch=writeBatch(db);
+    batch.set(TEAMDOC('A'),{floor:1,blueprint:bpA,timerEnd:now+FLOOR_MS,
+        floorStatus:'active',completedColors:[],leaderUid:lA.uid,leaderName:lA.name,memberCount:0});
+    batch.set(TEAMDOC('B'),{floor:1,blueprint:bpB,timerEnd:now+FLOOR_MS,
+        floorStatus:'active',completedColors:[],leaderUid:lB.uid,leaderName:lB.name,memberCount:0});
+    await batch.commit();
+    await setDoc(STATE,{gameStatus:'playing',confusionLevel:0,winner:null});
 };
 
-window.resetGame = async function() {
+window.resetGame=async function(){
     if(!confirm('모든 플레이어를 퇴장시키고 초기화합니다.')) return;
-    await setDoc(STATE_REF,{gameStatus:'reset',confusionLevel:0,winner:null});
+    await setDoc(STATE,{gameStatus:'reset',confusionLevel:0,winner:null});
     setTimeout(async()=>{
-        const pSnap=await getDocs(PLAYERS);
-        const batch=writeBatch(db); pSnap.forEach(d=>batch.delete(d.ref)); await batch.commit();
-        // 채팅 삭제
+        const pSnap=await getDocs(PCOL);
+        const b=writeBatch(db); pSnap.forEach(d=>b.delete(d.ref)); await b.commit();
         for(const t of['A','B']){
-            const cSnap=await getDocs(CHAT_COL(t));
-            const b2=writeBatch(db); cSnap.forEach(d=>b2.delete(d.ref)); await b2.commit();
+            const cs=await getDocs(CHATCOL(t));
+            const b2=writeBatch(db); cs.forEach(d=>b2.delete(d.ref)); await b2.commit();
         }
-        await setDoc(STATE_REF,{gameStatus:'lobby',confusionLevel:0,winner:null});
-        await setDoc(TEAM_REF('A'),{floor:0,blueprint:[],timerEnd:0,floorStatus:'waiting',completedColors:[],leaderUid:'',leaderName:'',memberCount:0});
-        await setDoc(TEAM_REF('B'),{floor:0,blueprint:[],timerEnd:0,floorStatus:'waiting',completedColors:[],leaderUid:'',leaderName:'',memberCount:0});
+        await setDoc(TEAMDOC('A'),{floor:0,blueprint:[],timerEnd:0,floorStatus:'waiting',
+            completedColors:[],leaderUid:'',leaderName:'',memberCount:0});
+        await setDoc(TEAMDOC('B'),{floor:0,blueprint:[],timerEnd:0,floorStatus:'waiting',
+            completedColors:[],leaderUid:'',leaderName:'',memberCount:0});
+        await setDoc(STATE,{gameStatus:'lobby',confusionLevel:0,winner:null});
     },800);
 };
-
-window.exitGM = ()=>{ isGM=false; showScreen('entry-screen'); };
+window.exitGM=()=>{ isGM=false; go('entry-screen'); };
 
 // ── 비번 모달 ─────────────────────────────────────────
 document.getElementById('gm-gear-btn').addEventListener('click',()=>{
-    document.getElementById('pw-input').value=''; document.getElementById('pw-error').textContent='';
+    document.getElementById('pw-input').value='';
+    document.getElementById('pw-error').textContent='';
     document.getElementById('pw-modal').classList.add('visible');
     setTimeout(()=>document.getElementById('pw-input').focus(),100);
 });
-document.getElementById('pw-cancel').addEventListener('click',()=>document.getElementById('pw-modal').classList.remove('visible'));
-document.getElementById('pw-confirm').addEventListener('click',confirmPW);
-document.getElementById('pw-input').addEventListener('keypress',e=>{if(e.key==='Enter')confirmPW();});
-function confirmPW(){
+document.getElementById('pw-cx').addEventListener('click',()=>document.getElementById('pw-modal').classList.remove('visible'));
+document.getElementById('pw-ok').addEventListener('click',chkPW);
+document.getElementById('pw-input').addEventListener('keypress',e=>{if(e.key==='Enter')chkPW();});
+function chkPW(){
     if(document.getElementById('pw-input').value==='1004'){
         document.getElementById('pw-modal').classList.remove('visible');
-        isGM=true; myTeam='A'; // GM은 양 팀 모두 감시
-        showScreen('gm-screen'); setupListeners();
+        isGM=true; myTeam='A';
+        go('gm-screen'); setupListeners();
     } else {
         document.getElementById('pw-error').textContent='비밀번호가 틀렸습니다';
-        document.getElementById('pw-input').value=''; document.getElementById('pw-input').focus();
+        document.getElementById('pw-input').value='';
+        document.getElementById('pw-input').focus();
     }
 }
 
 // ── 학생 입장 ─────────────────────────────────────────
-document.getElementById('join-btn').addEventListener('click', joinGame);
-document.getElementById('name-input').addEventListener('keypress',e=>{if(e.key==='Enter')joinGame();});
-
-async function joinGame() {
+window.joinGame=async function(){
     const name=document.getElementById('name-input').value.trim();
     if(!name){ document.getElementById('name-input').focus(); return; }
     if(!selectedTeam){ alert('팀을 선택해주세요!'); return; }
     myName=name; myTeam=selectedTeam;
 
-    // 팀의 첫 입장자인지 확인 → 팀장 결정
-    const teamSnap=await getDoc(TEAM_REF(myTeam));
-    const td=teamSnap.data();
-    const isFirstInTeam=!td||!td.leaderUid;
-    myRole=isFirstInTeam?'leader':'member';
+    // 팀 문서 확인 → 첫 입장자가 팀장
+    const tSnap=await getDoc(TEAMDOC(myTeam));
+    const td=tSnap.data();
+    const isFirst=!td||!td.leaderUid; // leaderUid 없으면 팀장
+    myRole=isFirst?'leader':'member';
 
-    // Firestore에 플레이어 등록
-    await setDoc(PLAYER_REF(myUid),{ name:myName, team:myTeam, isLeader:myRole==='leader', joinedAt:Date.now() });
+    // 플레이어 등록
+    await setDoc(PDOC(myUid),{name:myName,team:myTeam,isLeader:isFirst,joinedAt:Date.now()});
 
-    // 팀 문서에 팀장 / 멤버 수 업데이트
-    if(myRole==='leader'){
-        await setDoc(TEAM_REF(myTeam),{ leaderUid:myUid, leaderName:myName, memberCount:1 },{merge:true});
+    // 팀 문서 업데이트
+    if(isFirst){
+        await setDoc(TEAMDOC(myTeam),{leaderUid:myUid,leaderName:myName,memberCount:1},{merge:true});
     } else {
-        const currentCount=td?.memberCount||1;
-        await updateDoc(TEAM_REF(myTeam),{ memberCount:currentCount+1 });
+        const cnt=(td?.memberCount||1)+1;
+        await updateDoc(TEAMDOC(myTeam),{memberCount:cnt});
     }
 
-    hasJoined=true;
-
-    // 로비 화면
-    const badge=document.getElementById('lobby-team-badge');
+    // 로비 UI
+    const badge=document.getElementById('lobby-badge');
     badge.textContent=myTeam==='A'?'🔵 팀 A':'🔴 팀 B';
     badge.style.background=myTeam==='A'?'rgba(59,130,246,0.2)':'rgba(239,68,68,0.2)';
     badge.style.border=`2px solid ${myTeam==='A'?'#3b82f6':'#ef4444'}`;
     badge.style.color=myTeam==='A'?'#93c5fd':'#fca5a5';
-    document.getElementById('lobby-role').textContent=myRole==='leader'?'👑 당신은 팀장입니다':'당신은 팀원입니다';
-    showScreen('lobby-screen');
+    document.getElementById('lobby-role').textContent=isFirst?'👑 당신은 팀장입니다':'팀원으로 참가합니다';
+    go('lobby-screen');
     setupListeners();
-}
+};
 
 // ── 인증 ──────────────────────────────────────────────
-try { await signInAnonymously(auth); myUid=auth.currentUser.uid; } catch(e){ console.error(e); }
+try{ await signInAnonymously(auth); myUid=auth.currentUser.uid; }catch(e){console.error(e);}
 </script>
 </body>
 </html>
